@@ -1,23 +1,25 @@
-import React, { useState } from 'react'; 
+import React, { Component } from 'react'; 
 
-export default function Increment() { 
-    const [value, setValue ] = useState(0); 
+export default class Increment extends Component { 
+    state = { value: 0 } 
 
-    const handleIncrementClick = () => { 
-        setValue(value+1); 
+    handleIncrementClick = () => { 
+       this.setState({ value: this.state.value + 1 }) 
     }
 
-    const handleDecrementClick = () => { 
-        setValue(value-1);
+    handleDecrementClick = () => { 
+        this.setState({ value: this.state.value - 1 }) 
     }
 
-    
+    render() { 
         return(
             <>
-                <h2>Value: {value}</h2> 
-                <button onClick={handleIncrementClick}>Increment + </button>
-                <button onClick={handleDecrementClick}>Decrement - </button>
+                <h2>Value: {this.state.value}</h2> 
+                <button onClick={this.handleIncrementClick}>Increment + </button>
+                <button onClick={this.handleDecrementClick}>Decrement - </button>
             </>
         )
+    }
+    
     
 }
